@@ -1,1 +1,10 @@
-
+{
+  "name": "test_workflow",
+  "status": "active",
+  "steps": [
+    "init",
+    "process",
+    "generate_output",
+    "store"
+  ]
+}
