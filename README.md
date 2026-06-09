@@ -1,4 +1,5 @@
 # D-T-Ai-Outputs
+AI Engineering Ecosystem for workflow automation, agent orchestration, and structured output generation across modular repositories.
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://vercel.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
@@ -48,3 +49,5 @@ This repo ensures every output is tracked, versioned, and easily accessible for 
 ---
 
 ## Structure
+
+The repository structure is as follows:
