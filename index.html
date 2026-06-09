@@ -2,31 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>D&T AI Outputs Dashboard</title>
+  <title>D-T-AI Outputs Dashboard</title>
   <style>
     body {
       font-family: Arial;
       background: #0f172a;
-      color: white;
+      color: #e2e8f0;
       padding: 40px;
     }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
     .box {
       background: #1e293b;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 15px;
       margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .file {
+      padding: 8px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    .title {
+      color: #38bdf8;
+      margin-top: 30px;
     }
   </style>
 </head>
+
 <body>
 
-  <h1>🚀 D-T-AI Outputs Dashboard</h1>
+<h1>🚀 D-T-AI Outputs Dashboard</h1>
 
-  <div class="box">📁 Workflows: Active</div>
-  <div class="box">📄 Reports: Ready</div>
-  <div class="box">🧠 Prompts: Loaded</div>
-  <div class="box">📊 Logs: Running</div>
-  <div class="box">🖼 Screenshots: Available</div>
+<div class="box">
+  📡 Live GitHub Repository Viewer
+</div>
+
+<h2 class="title">📁 Workflows</h2>
+<div id="workflows"></div>
+
+<h2 class="title">📄 Reports</h2>
+<div id="reports"></div>
+
+<h2 class="title">📊 Logs</h2>
+<div id="logs"></div>
+
+<h2 class="title">🧠 Prompts</h2>
+<div id="prompts"></div>
+
+<script>
+const repo = "HMO-Tech/DT-Ai-outputs";
+
+async function loadFolder(folder, elementId) {
+  const url = `https://api.github.com/repos/${repo}/contents/${folder}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const container = document.getElementById(elementId);
+
+    data.forEach(file => {
+      const div = document.createElement("div");
+      div.className = "file";
+      div.innerText = "📄 " + file.name;
+      container.appendChild(div);
+    });
+
+  } catch (err) {
+    document.getElementById(elementId).innerText = "Error loading data";
+  }
+}
+
+loadFolder("workflows", "workflows");
+loadFolder("reports", "reports");
+loadFolder("logs", "logs");
+loadFolder("prompts", "prompts");
+
+</script>
 
 </body>
 </html>
